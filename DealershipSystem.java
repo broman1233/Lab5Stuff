@@ -9,7 +9,13 @@ public class DealershipSystem
 		String menuPrompt = "\n Please pick your menu selection";
 		Scanner keyboard = new Scanner(System.in);
 		boolean quit = false;
-		 String vinNum;
+		boolean validValue = false;
+		String vinNum;
+		String model;
+		String year;
+		String color;
+		String make;
+		double value;
 		int userSelection= 0;
 		String menuError = "Selection must be a number between 1-8";
 		String menuDisplay = //displays menu to screen
@@ -33,7 +39,7 @@ public class DealershipSystem
 					userSelection = keyboard.nextInt();
 					
 					while((userSelection < 1 || userSelection > 8)) {
-						System.out.println("invalid selection, please enter a number between 1-5");
+						System.out.println("invalid selection, please enter a number between 1-8");
 						userSelection = keyboard.nextInt();
 					}
 					validInput = true;
@@ -50,8 +56,37 @@ public class DealershipSystem
 				//allows user to create a Car and passes in the user input and the arraylist of cars
 				// ask user for stuff below
 				System.out.print(" Create a Car");
-				System.out.print("Please enter a Vin Number for your Car");
-				 vinNum = keyboard.nextLine();
+				System.out.println("Please enter a Vin Number for your Car");
+				vinNum = keyboard.nextLine();
+				System.out.println("Please enter a make for your Car");
+				make = keyboard.nextLine();
+				System.out.println("Please enter a model for your Car");
+				model = keyboard.nextLine();
+				System.out.println("Please enter a year for your Car");
+				year = keyboard.nextLine();
+				System.out.println("Please enter a color for your Car");
+				color = keyboard.nextLine();
+				while (!validValue) {
+					try {
+						System.out.println("Please enter a Value for your Car");
+						value = keyboard.nextDouble();
+						while (value < 0) {
+							System.out.print("Please enter a Value for your Car");
+							value = keyboard.nextInt();
+							
+						}
+						
+						validValue = true;
+						break;
+						
+					}
+					catch (InputMismatchException z) {
+						System.out.print("Please Enter a valid price number");
+						keyboard.nextLine();
+						
+					}	
+				}
+								
 				//createCar(vin#,model,year,color,make,value, carList); 
 				
 				//quit = false;
