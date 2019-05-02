@@ -11,11 +11,11 @@ public class DealershipSystem
 		Scanner keyboard = new Scanner(System.in);
 		boolean quit = false;
 		boolean validValue = false;
-		String vinNum;
+		String vinNum = "poop";
 		String model;
 		String year;
 		String color;
-		String make;
+		String make = "oop";
 		double value;
 		int userSelection= 0;
 		String menuError = "Selection must be a number between 1-8";
@@ -40,22 +40,22 @@ public class DealershipSystem
 		
 		
 		do {
-			System.out.print(menuDisplay);
+			System.out.println(menuDisplay);
 			boolean validInput = false;
 			while (!validInput) {
 				try {
-					System.out.print(menuPrompt);
-					userSelection = keyboard.nextInt();
+					System.out.println(menuPrompt);
+					userSelection = Integer.parseInt(keyboard.nextLine());
 					
 					while((userSelection < 1 || userSelection > 8)) {
 						System.out.println("invalid selection, please enter a number between 1-8");
-						userSelection = keyboard.nextInt();
+						userSelection = Integer.parseInt(keyboard.nextLine());
 					}
 					validInput = true;
 					break;
 				}
 				catch(InputMismatchException m) {
-					System.out.print(menuError);
+					System.out.println(menuError);
 				}
 			}
 					
@@ -64,11 +64,13 @@ public class DealershipSystem
 			case 1: 
 				//allows user to create a Car and passes in the user input and the arraylist of cars
 				// ask user for stuff below
-				System.out.print(" Create a Car");
+				System.out.println(" Create a Car");
 				System.out.println("Please enter a Vin Number for your Car");
 				vinNum = keyboard.nextLine();
+				//System.out.println(vinNum);
 				System.out.println("Please enter a make for your Car");
 				make = keyboard.nextLine();
+				//System.out.println(make);
 				System.out.println("Please enter a model for your Car");
 				model = keyboard.nextLine();
 				System.out.println("Please enter a year for your Car");
@@ -80,8 +82,8 @@ public class DealershipSystem
 						System.out.println("Please enter a Value for your Car");
 						value = keyboard.nextDouble();
 						while (value < 0) {
-							System.out.print("Please enter a Value for your Car");
-							value = keyboard.nextInt();
+							System.out.println("Please enter a Value for your Car");
+							value = Integer.parseInt(keyboard.nextLine());
 							
 						}
 						
@@ -90,7 +92,7 @@ public class DealershipSystem
 						
 					}
 					catch (InputMismatchException z) {
-						System.out.print("Please Enter a valid price number");
+						System.out.println("Please Enter a valid price number");
 						keyboard.nextLine();
 						
 					}	
@@ -99,7 +101,7 @@ public class DealershipSystem
 				//createCar(vinNum,model,year,color,make,value, carList); 
 				
 				//quit = false;
-				//break;
+				break;
 			case 2:
 				//ask for vin then find car
 				System.out.println("Please enter a Vin Number for the Car you want to modify");
@@ -110,50 +112,52 @@ public class DealershipSystem
 				
 				// then give them a menu to select what to edit
 				do {
-					System.out.print(modifyMenu);
+					System.out.println(modifyMenu);
 					boolean validInput2 = false;
 					while (!validInput2) {
 						try {
-							System.out.print(modifyMenu);
-							userSelection = keyboard.nextInt();
+							System.out.println(modifyMenu);
+							userSelection = Integer.parseInt(keyboard.nextLine());
 							
 							while((userSelection < 1 || userSelection > 7)) {
 								System.out.println(menuError2);
-								userSelection = keyboard.nextInt();
+								userSelection = Integer.parseInt(keyboard.nextLine());
 							}
 							validInput2 = true;
 							break;
 						}
 						catch(InputMismatchException m) {
-							System.out.print(menuError2);
+							System.out.println(menuError2);
 						}
 					}
 							
 					switch(userSelection)
 					{ 
 					case 1:
-						System.out.print("Enter the vin new number");
+						System.out.println("Enter the vin new number");
 						vinNum = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
+						break;
 					case 2:
-						System.out.print("Enter the new make ");
+						System.out.println("Enter the new make ");
 						make = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
-					
+						break;
 					case 3: 
-						System.out.print("Enter the new model ");
+						System.out.println("Enter the new model ");
 						make = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
+						break;
 					case 4:
-						System.out.print("Enter the new year ");
+						System.out.println("Enter the new year ");
 						make = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
-					
+						break;
 					case 5:
-						System.out.print("Enter the new color ");
+						System.out.println("Enter the new color ");
 						make = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
-					
+						break;
 					case 6:
 						validValue = false;
 						while (!validValue) {
@@ -161,8 +165,8 @@ public class DealershipSystem
 								System.out.println("Please enter a Value for your Car");
 								value = keyboard.nextDouble();
 								while (value < 0) {
-									System.out.print("Please enter a Value for your Car");
-									value = keyboard.nextInt();
+									System.out.println("Please enter a Value for your Car");
+									value = Integer.parseInt(keyboard.nextLine());
 									
 								}
 								
@@ -171,12 +175,12 @@ public class DealershipSystem
 								
 							}
 							catch (InputMismatchException z) {
-								System.out.print("Please Enter a valid price number");
+								System.out.println("Please Enter a valid price number");
 								keyboard.nextLine();
 								
 							}	
 						}
-						System.out.print("Enter the new value ");
+						System.out.println("Enter the new value ");
 						make = keyboard.nextLine();
 						//modifyCar(userSelection, vinNum, CarList)
 					case 7:
@@ -199,7 +203,7 @@ public class DealershipSystem
 				//deleteCar(vinNum, carList); 
 				
 				//quit = false;
-				//break;
+				break;
 			case 4:
 				System.out.println("Please enter a Vin Number for the Car you want to find");
 				vinNum = keyboard.nextLine();
@@ -208,25 +212,28 @@ public class DealershipSystem
 				//findCar(vinNum,model,year,color,make,value, carList); 
 				
 				//quit = false;
-				//break;
+				break;
 			case 5:
+				System.out.println("Please enter a Vin Number for the Car you want to sell");
+				vinNum = keyboard.nextLine();
 				// Recording Transactions needs the list of Transactions
-				//ask user for stuff below
+				// findCar
 				//recordTrans(vinNum,model,year,color,make,value,empNumber, TransList); 
-				
+				//deleteCar
 				//quit = false;
-				//break;
+				break;
 			case 6:
-				
+				System.out.println("Displaying Your Sales Record");
 				//DisplaySales(empNumber, carList); 
 				
 				//quit = false;
-				//break;
+				break;
 			case 7:
+				System.out.println("Displaying Your Sales Record");
 				//DisplayTotalSales(empNumber, carList); 
 				
 				//quit = false;
-				//break;
+				break;
 			case 8:
 				
 				quit = true;
